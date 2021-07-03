@@ -13,15 +13,22 @@ const closeModal = function () {
 };
 
 const openModal = function () {
-  console.log('Button Clicked');
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
 
-// testing
+// oepn modal
 for (let i = 0; i < btnsOpenModal.length; i++)
   btnsOpenModal[i].addEventListener('click', openModal);
 
-// close window
+// close modal
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
+
+// close modal on hitting esc key
+document.addEventListener('keydown', function (e) {
+  console.log(e);
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
+});
